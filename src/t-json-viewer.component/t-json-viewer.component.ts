@@ -26,6 +26,9 @@ export class TJsonViewerComponent implements OnChanges {
   @Input()
   expandAll: false;
 
+  @Input()
+  filterText: null;
+
   public asset: Array<Item> = [];
 
   constructor() { }
@@ -85,7 +88,8 @@ export class TJsonViewerComponent implements OnChanges {
 
     } else if (Array.isArray(item.value)) {
       item.type = 'array';
-      item.title = `Array[${item.value.length}] ${JSON.stringify(item.value)}`;
+      //item.title = `Array[${item.value.length}] ${JSON.stringify(item.value)}`;
+      item.title = `[...]`;
 
     } else if (item.value === null) {
       item.type = 'null';
@@ -93,7 +97,8 @@ export class TJsonViewerComponent implements OnChanges {
 
     } else if (typeof (item.value) === 'object') {
       item.type = 'object';
-      item.title = `Object ${JSON.stringify(item.value)}`;
+      //item.title = `Object ${JSON.stringify(item.value)}`;
+      item.title = `{…}`
 
     } else if (item.value === undefined) {
       item.type = 'undefined';

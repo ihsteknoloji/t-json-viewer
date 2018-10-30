@@ -1,6 +1,5 @@
 <div class="t-json-viewer">
-
-  <div
+  <div 
     *ngFor="let item of asset;"
     [ngClass]="['item__type--' + item.type, 'is-object-' + isObject(item), 'is-opened-' + item.isOpened]"
     class="item"
@@ -11,7 +10,7 @@
       (click)="clickHandle(item)">
       <div
         class="toggler"
-        *ngIf="isObject(item)"></div>
+        *ngIf="isObject(item)"><i class="icon" [ngClass]="{'icon-chevron':item.isOpened, 'icon-chev-right':!item.isOpened}"></i></div>
 
       <span class="item__key">{{item.key}}</span><span class="item__dot">:</span>
 
@@ -23,7 +22,7 @@
     <div
       class="inner-item"
       *ngIf="item.isOpened && isObject(item)">
-      <t-json-viewer [json]="item.value" [maxCollapsedLength]="maxCollapsedLength"></t-json-viewer>
+      <t-json-viewer [json]="item.value" [maxCollapsedLength]="maxCollapsedLength" [expandAll]="expandAll"></t-json-viewer>
     </div>
 
   </div>
